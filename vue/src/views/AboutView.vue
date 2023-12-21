@@ -115,7 +115,8 @@
     <div class="chat">
       <p v-if="userName!=null">Chatting to: {{ userName.name }} </p>
       <div v-for="value in chats" v-if="userName != null">
-        <p v-if="value.destination === userName.id">{{ value.chat }}</p>
+        <p v-if="value.destination === userName.id && value.account === userData.user.id">{{ value.chat }}</p>
+        <p v-else-if="value.destination === userData.user.id && userName.id === userData.user.id">{{ value.chat }}</p> <!-- handles inbox -->
       </div>
     </div>
     <div class="chatbox">
